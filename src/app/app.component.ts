@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { v4 as uuid } from 'uuid';
 
 import { ShoppingItem } from './store/models/shopping-item.model';
-import { AddItemAction, DeleteItemAction } from './store/actions/shopping.action';
+import { AddItemAction, DeleteItemAction, LoadShoppingAction } from './store/actions/shopping.action';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +14,10 @@ import { AddItemAction, DeleteItemAction } from './store/actions/shopping.action
 })
 export class AppComponent implements OnInit {
 
-  shoppinfItems$: Observable<Array<ShoppingItem>>
+  shoppingItems$: Observable<Array<ShoppingItem>>
+  loading$: Observable<boolean>;
+  error$: Observable<Error>;
+
   newShoppingItem: ShoppingItem = { id: '', name: '' }
 
 
@@ -23,7 +26,10 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.shoppinfItems$ = this.store.select(store => store.shopping)
+    this.shoppingItems$ = this.store.select(store => store.shopping.list);
+    this.loading$ = this.store.select(store => store.shopping.loading);
+    this.error$ = this.store.select(store => store.shopping.error);
+    this.store.dispatch(new LoadShoppingAction());
   }
 
   addItem() {
