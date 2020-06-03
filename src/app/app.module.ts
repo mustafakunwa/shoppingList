@@ -9,7 +9,7 @@ import { environment } from '../environments/environment';
 import { HttpClientModule } from '@angular/common/http';
 import { EffectsModule } from '@ngrx/effects';
 import { ShoopingEffect } from './store/effects/shopping.effect';
-
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent
@@ -18,6 +18,7 @@ import { ShoopingEffect } from './store/effects/shopping.effect';
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
     StoreModule.forRoot({
       shopping: ShoppingReducer,
     }),

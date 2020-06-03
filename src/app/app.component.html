@@ -6,7 +6,7 @@
       </h2>
 
         <ul *ngIf="(shoppingItems$ | async); else noItems">
-          <li *ngFor="let shopping of shoppingItems$ | async" (click)="deleteItem(shopping.id)">
+          <li *ngFor="let shopping of shoppingItems$ | async" (click)="deleteItem(shopping.id)" @fade >
             <span>{{ shopping.name }}</span>
           </li>
         </ul>

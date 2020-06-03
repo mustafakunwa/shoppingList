@@ -6,11 +6,22 @@ import { v4 as uuid } from 'uuid';
 
 import { ShoppingItem } from './store/models/shopping-item.model';
 import { AddItemAction, DeleteItemAction, LoadShoppingAction } from './store/actions/shopping.action';
+import { trigger, transition, state, style, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  animations: [
+    trigger(
+      'fade', [
+      state('void', style({ transform: 'translateX(-20px)' })),
+      transition(':enter,:leave', [
+        animate(1000)
+      ]),
+    ]
+    ),
+  ]
 })
 export class AppComponent implements OnInit {
 
