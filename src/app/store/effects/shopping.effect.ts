@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { Effect, Actions, ofType } from '@ngrx/effects';
 import { LoadShoppingAction, ShoppingActionTypes, LoadShoppingSuccessAction, LoadShoppingFailureAction, DeleteItemSuccessAction, AddItemFailureAction, DeleteItemAction, AddItemSuccessAction, AddItemAction, DeleteItemFailureAction } from '../actions/shopping.action';
 import { mergeMap, map, catchError } from 'rxjs/operators';
-import { ShoppingService } from 'src/app/shopping.service';
+import { ShoppingService } from '../../../app/shopping.service';
 import { of } from 'rxjs';
 
 @Injectable()
